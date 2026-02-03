@@ -1,0 +1,94 @@
+---
+title: "LLM Providers"
+description: "Configure AI models from Anthropic, OpenAI, and Google"
+---
+
+# LLM Providers
+
+Wovly uses Large Language Models (LLMs) to understand your requests and generate responses. You can choose from multiple providers.
+
+## Supported Providers
+
+<CardGroup cols={3}>
+  <Card title="Anthropic Claude" icon="message">
+    Best overall quality and reasoning
+  </Card>
+  <Card title="OpenAI GPT" icon="robot">
+    Fast and capable
+  </Card>
+  <Card title="Google Gemini" icon="google">
+    Good balance of speed and quality
+  </Card>
+</CardGroup>
+
+## Configuration
+
+1. Go to **Settings** in Wovly
+2. Find the **LLM Providers** section
+3. Enter your API key for one or more providers
+4. Select your preferred provider
+
+## Getting API Keys
+
+### Anthropic Claude
+
+1. Go to [console.anthropic.com](https://console.anthropic.com)
+2. Sign up or log in
+3. Navigate to API Keys
+4. Create a new key
+
+### OpenAI GPT
+
+1. Go to [platform.openai.com](https://platform.openai.com)
+2. Sign up or log in
+3. Navigate to API Keys
+4. Create a new secret key
+
+### Google Gemini
+
+1. Go to [aistudio.google.com](https://aistudio.google.com)
+2. Sign up or log in
+3. Click "Get API key"
+4. Create a key for a new or existing project
+
+## Model Selection
+
+Each provider has multiple models:
+
+| Provider | Models | Recommendation |
+|----------|--------|----------------|
+| Anthropic | Claude Sonnet, Claude Opus | **Sonnet** for daily use |
+| OpenAI | GPT-4o, GPT-4o-mini | **GPT-4o** for quality |
+| Google | Gemini Pro, Gemini Flash | **Pro** for complex tasks |
+
+## Cost Considerations
+
+LLM APIs charge per token (roughly per word):
+
+| Provider | Approximate Cost |
+|----------|------------------|
+| Claude Sonnet | ~$3 per 1M input tokens |
+| GPT-4o | ~$5 per 1M input tokens |
+| Gemini Pro | ~$1.25 per 1M input tokens |
+
+<Tip>
+  For most users, expect to spend $5-20/month depending on usage. Heavy task automation may increase costs.
+</Tip>
+
+## Multiple Providers
+
+You can configure multiple providers and switch between them:
+
+- **Primary**: Used for most interactions
+- **Fallback**: Used if primary fails
+
+## Privacy
+
+<Note>
+  Your conversations are sent to the LLM provider you choose. Review each provider's data policies:
+  - [Anthropic Privacy](https://www.anthropic.com/privacy)
+  - [OpenAI Privacy](https://openai.com/policies/privacy-policy)
+  - [Google AI Privacy](https://ai.google.dev/terms)
+</Note>
+
+API calls are made directly from your machine - Wovly does not proxy or store your conversations.

@@ -1,0 +1,75 @@
+---
+title: "Asana"
+description: "Create and manage tasks in Asana"
+---
+
+# Asana
+
+Connect Asana to manage your tasks and projects.
+
+## Capabilities
+
+- **List tasks** - View your assigned tasks
+- **Create tasks** - Add new tasks to projects
+- **Update tasks** - Mark complete, change due dates
+- **List projects** - View your projects and workspaces
+
+## Setup
+
+### Step 1: Create Asana App
+
+1. Go to [Asana Developer Console](https://app.asana.com/0/developer-console)
+2. Click **Create new app**
+3. Name it "Wovly"
+4. Add Redirect URL: `http://localhost:18923/oauth/callback`
+5. Note your **Client ID** and **Client Secret**
+
+### Step 2: Connect in Wovly
+
+1. Go to **Integrations** in Wovly
+2. Click **Setup** on Asana
+3. Enter Client ID and Client Secret
+4. Click **Connect**
+5. Authorize in Asana
+
+## Usage
+
+```
+"What are my Asana tasks?"
+
+"Create a task in Project X: Review proposal"
+
+"Mark the design review task as complete"
+
+"What's due this week in Asana?"
+```
+
+## How It Works
+
+Wovly uses OAuth 2.0 to access your Asana account. Tokens are refreshed automatically.
+
+## Workspaces
+
+If you have multiple Asana workspaces:
+
+```
+You: Create a task: Update documentation
+
+Wovly: Which workspace should I create this in?
+- Personal Tasks
+- Company Workspace
+```
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Project not found">
+    Ensure you have access to the project in Asana. Check workspace membership.
+  </Accordion>
+  <Accordion title="Can't create task">
+    You need write access to the project. Check your Asana permissions.
+  </Accordion>
+  <Accordion title="OAuth error">
+    Verify the redirect URL matches exactly in your Asana app settings.
+  </Accordion>
+</AccordionGroup>

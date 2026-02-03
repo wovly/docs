@@ -1,0 +1,81 @@
+---
+title: "Notion"
+description: "Search and create content in Notion"
+---
+
+# Notion
+
+Connect Notion to search pages, create content, and manage your workspace.
+
+## Capabilities
+
+- **Search pages** - Find pages and databases
+- **Read content** - Get page contents
+- **Create pages** - Add new pages to databases
+- **Update pages** - Modify existing content
+
+## Setup
+
+### Step 1: Create Integration
+
+1. Go to [Notion Integrations](https://www.notion.so/my-integrations)
+2. Click **New integration**
+3. Name it "Wovly"
+4. Select your workspace
+5. Copy the **Internal Integration Token**
+
+### Step 2: Share Pages with Integration
+
+1. Open a Notion page you want Wovly to access
+2. Click **Share** in the top right
+3. Click **Invite**
+4. Select your "Wovly" integration
+
+<Note>
+  You must explicitly share pages/databases with the integration. It can only access pages you've shared.
+</Note>
+
+### Step 3: Connect in Wovly
+
+1. Go to **Integrations** in Wovly
+2. Click **Setup** on Notion
+3. Paste your Integration Token
+4. Click **Connect**
+
+## Usage
+
+```
+"Search Notion for project notes"
+
+"Create a new page in my Tasks database"
+
+"What's in my meeting notes page?"
+
+"Add a task to my Notion todo list"
+```
+
+## Sharing Access
+
+The integration only sees pages you explicitly share:
+
+1. **Database access** - Share the database to add/read items
+2. **Page access** - Share individual pages to read/edit them
+3. **Workspace access** - Share parent pages to access children
+
+## How It Works
+
+Wovly uses Notion's API with your integration token. The token doesn't expire but can be revoked anytime.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Page not found">
+    Ensure the page is shared with your Wovly integration. Check Share settings.
+  </Accordion>
+  <Accordion title="Can't create page">
+    You need to share the parent page or database with the integration.
+  </Accordion>
+  <Accordion title="Permission denied">
+    The integration may have been removed from the page. Re-share it.
+  </Accordion>
+</AccordionGroup>

@@ -1,0 +1,81 @@
+---
+title: "GitHub"
+description: "Manage repositories, issues, and pull requests"
+---
+
+# GitHub
+
+Connect GitHub to manage your repositories, issues, and pull requests.
+
+## Capabilities
+
+- **List repos** - View your repositories
+- **Read issues** - See open issues and PRs
+- **Create issues** - Open new issues
+- **Search code** - Find code across repos
+
+## Setup
+
+### Step 1: Create Personal Access Token
+
+1. Go to [GitHub Settings > Developer Settings > Personal Access Tokens](https://github.com/settings/tokens)
+2. Click **Generate new token (classic)**
+3. Name it "Wovly"
+4. Select scopes:
+   - `repo` - Full repository access
+   - `read:user` - Read user profile
+
+### Step 2: Connect in Wovly
+
+1. Go to **Integrations** in Wovly
+2. Click **Setup** on GitHub
+3. Paste your Personal Access Token
+4. Click **Connect**
+
+## Usage
+
+```
+"List my GitHub repositories"
+
+"What are the open issues in my-repo?"
+
+"Create an issue in my-repo: Bug in login page"
+
+"Show recent pull requests"
+```
+
+## Permissions
+
+| Scope | Why Needed |
+|-------|------------|
+| `repo` | Access public and private repositories |
+| `read:user` | Get your GitHub profile |
+
+<Note>
+  The `repo` scope gives full access to your repositories. Use a fine-grained token if you want more control.
+</Note>
+
+## Fine-Grained Tokens
+
+For more security, use a fine-grained personal access token:
+
+1. Go to **Fine-grained tokens** in GitHub settings
+2. Select specific repositories
+3. Grant only needed permissions:
+   - Issues: Read and write
+   - Pull requests: Read
+   - Contents: Read
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Repository not found">
+    Ensure the token has access to the repository. Private repos need the `repo` scope.
+  </Accordion>
+  <Accordion title="Permission denied">
+    Check token scopes. You may need to regenerate with additional permissions.
+  </Accordion>
+  <Accordion title="Token expired">
+    Personal access tokens can be set to expire. Generate a new one if expired.
+  </Accordion>
+</AccordionGroup>

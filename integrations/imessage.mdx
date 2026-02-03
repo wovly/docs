@@ -1,0 +1,101 @@
+---
+title: "iMessage"
+description: "Send and read iMessages directly from Wovly (macOS only)"
+---
+
+# iMessage
+
+Send and read iMessages and SMS directly from Wovly. macOS only.
+
+## Capabilities
+
+- **Send texts** - Send iMessage or SMS to any contact
+- **Read messages** - View recent conversations
+- **Search history** - Find messages by sender or content
+- **Contact lookup** - Find phone numbers from Apple Contacts
+
+## Requirements
+
+- **macOS only** - iMessage integration uses native macOS APIs
+- **Full Disk Access** - Required to read message database
+- **Contacts access** - Required for contact lookup
+
+## Setup
+
+### Step 1: Enable in Wovly
+
+1. Go to **Integrations** in Wovly
+2. Click **Enable** on iMessage
+
+### Step 2: Grant Full Disk Access
+
+1. Open **System Preferences** > **Security & Privacy** > **Privacy**
+2. Select **Full Disk Access**
+3. Click the lock to make changes
+4. Add Wovly to the list
+
+### Step 3: Grant Contacts Access
+
+When prompted, allow Wovly to access your Contacts.
+
+## Usage
+
+```
+"Text Sarah happy birthday"
+
+"Send a message to Mom that I'll be late"
+
+"What did John text me today?"
+
+"Search texts for the address Jeff sent"
+```
+
+## Contact Resolution
+
+Wovly automatically looks up contacts:
+
+```
+You: "Text Sarah about dinner"
+
+Wovly: [Looks up "Sarah" in Contacts]
+       [Finds Sarah's phone number]
+       [Sends message]
+```
+
+If multiple matches:
+```
+You: "Text John about the meeting"
+
+Wovly: I found multiple Johns:
+       - John Smith (work): +1-555-0100
+       - John Doe (personal): +1-555-0200
+       Which John do you mean?
+```
+
+## How It Works
+
+Wovly reads your local Messages database (`~/Library/Messages/chat.db`) and uses AppleScript to send messages through the Messages app.
+
+<Note>
+  Messages are sent through Apple's servers just like normal iMessages. Wovly only facilitates sending - your messages aren't processed differently.
+</Note>
+
+## Privacy
+
+- Message history is read locally from your Mac
+- Sent messages go through Apple's iMessage servers
+- No message content is stored by Wovly (except in conversation memory)
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Can't read messages">
+    Ensure Full Disk Access is granted. Restart Wovly after granting permission.
+  </Accordion>
+  <Accordion title="Messages not sending">
+    Ensure Messages app is set up and you can send messages manually. Wovly uses AppleScript to trigger sends.
+  </Accordion>
+  <Accordion title="Contact not found">
+    The contact must be in your Apple Contacts app. Check the spelling or add the contact first.
+  </Accordion>
+</AccordionGroup>

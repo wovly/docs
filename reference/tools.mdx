@@ -1,0 +1,285 @@
+---
+title: "Tools Reference"
+description: "Complete list of available tools and their parameters"
+---
+
+# Tools Reference
+
+Complete reference of tools available to Wovly's AI assistant.
+
+## Communication Tools
+
+### send_email
+
+Send an email via Gmail.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| to | string | Yes | Recipient email address |
+| subject | string | Yes | Email subject |
+| body | string | Yes | Email body content |
+| cc | string | No | CC recipients |
+
+### send_imessage
+
+Send an iMessage or SMS (macOS only).
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| recipient | string | Yes | Phone number or contact name |
+| message | string | Yes | Message content |
+
+### send_slack_message
+
+Send a Slack message.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| channel | string | Yes | Channel name or user ID |
+| message | string | Yes | Message content |
+
+### send_telegram_message
+
+Send a message via Telegram bot.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| chat_id | string | Yes | Chat or user ID |
+| message | string | Yes | Message content |
+
+### send_discord_message
+
+Send a Discord message.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| channel_id | string | Yes | Channel ID |
+| message | string | Yes | Message content |
+
+## Calendar Tools
+
+### get_calendar_events
+
+Get calendar events for a date range.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| start_date | string | Yes | Start date (YYYY-MM-DD) |
+| end_date | string | No | End date (defaults to start_date) |
+
+### create_calendar_event
+
+Create a calendar event.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| title | string | Yes | Event title |
+| start | string | Yes | Start time (ISO 8601) |
+| end | string | Yes | End time (ISO 8601) |
+| description | string | No | Event description |
+| attendees | array | No | Email addresses to invite |
+
+## Message Reading Tools
+
+### list_emails
+
+List recent emails.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| query | string | No | Gmail search query |
+| max_results | number | No | Maximum results (default 10) |
+
+### get_recent_messages
+
+Get recent iMessages.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| contact | string | No | Filter by contact |
+| limit | number | No | Maximum messages |
+
+### list_slack_messages
+
+Get recent Slack messages.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| channel | string | Yes | Channel name or ID |
+| limit | number | No | Maximum messages |
+
+## Browser Tools
+
+### browser_navigate
+
+Navigate to a URL.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| url | string | Yes | URL to navigate to |
+
+### browser_click
+
+Click an element on the page.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| ref | string | Yes | Element reference from snapshot |
+
+### browser_type
+
+Type text into an input field.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| ref | string | Yes | Element reference |
+| text | string | Yes | Text to type |
+
+### browser_snapshot
+
+Capture current page state.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| (none) | | | Returns screenshot and element list |
+
+### browser_scroll
+
+Scroll the page.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| direction | string | Yes | "up" or "down" |
+
+## Memory Tools
+
+### search_memory
+
+Search conversation history.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| query | string | Yes | Search terms |
+| date_range | string | No | "last_week", "last_month", "all" |
+
+## Profile Tools
+
+### get_user_profile
+
+Get user profile information.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| (none) | | | Returns profile object |
+
+### update_user_profile
+
+Update profile information.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| firstName | string | No | First name |
+| lastName | string | No | Last name |
+| occupation | string | No | Job title |
+| city | string | No | Location |
+| homeLife | string | No | Home context |
+
+## Task Tools
+
+### create_task
+
+Create a background task.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| title | string | Yes | Task title |
+| originalRequest | string | Yes | User's request |
+| messagingChannel | string | Yes | imessage, email, slack, etc. |
+| plan | array | Yes | Steps to execute |
+| context | object | No | Additional context |
+
+### list_tasks
+
+List all tasks.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| (none) | | | Returns task list |
+
+## Documentation Tools
+
+### fetch_documentation
+
+Fetch Wovly documentation.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| topic | string | Yes | Topic to look up |
+
+## Weather Tools
+
+### get_weather_forecast
+
+Get weather forecast.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| location | string | Yes | City name or coordinates |
+| days | number | No | Forecast days (default 3) |
+
+## Social Tools
+
+### post_tweet
+
+Post a tweet to X.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| text | string | Yes | Tweet content |
+
+### send_x_dm
+
+Send a DM on X.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| recipient | string | Yes | Username or ID |
+| message | string | Yes | Message content |
+
+### create_reddit_post
+
+Create a Reddit post.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| subreddit | string | Yes | Subreddit name |
+| title | string | Yes | Post title |
+| content | string | Yes | Post content |
+
+## Productivity Tools
+
+### search_notion
+
+Search Notion pages.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| query | string | Yes | Search query |
+
+### list_github_repos
+
+List GitHub repositories.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| (none) | | | Returns repo list |
+
+### create_github_issue
+
+Create a GitHub issue.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| repo | string | Yes | Repository name |
+| title | string | Yes | Issue title |
+| body | string | No | Issue description |

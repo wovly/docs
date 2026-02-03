@@ -1,0 +1,92 @@
+---
+title: "X (Twitter)"
+description: "Post tweets, send DMs, and interact on X"
+---
+
+# X (Twitter)
+
+Connect X (formerly Twitter) to post tweets, send direct messages, and interact with content.
+
+## Capabilities
+
+- **Post tweets** - Share updates to your timeline
+- **Send DMs** - Direct message other users
+- **Get timeline** - View recent tweets
+- **Search** - Find tweets by keyword
+
+## Setup
+
+### Step 1: Apply for Developer Access
+
+1. Go to [developer.twitter.com](https://developer.twitter.com)
+2. Apply for a developer account
+3. Create a new project and app
+
+### Step 2: Configure OAuth 2.0
+
+1. In your app settings, enable **OAuth 2.0**
+2. Set App Type to **Native App**
+3. Add Callback URL: `http://localhost:18923/oauth/callback`
+
+### Step 3: Get Credentials
+
+1. Note your **Client ID**
+2. Generate a **Client Secret**
+
+### Step 4: Set Permissions
+
+Required scopes:
+- `tweet.read` - Read tweets
+- `tweet.write` - Post tweets
+- `users.read` - Read user info
+- `dm.read` - Read DMs
+- `dm.write` - Send DMs
+
+### Step 5: Connect in Wovly
+
+1. Go to **Integrations** in Wovly
+2. Click **Setup** on X
+3. Enter Client ID and Client Secret
+4. Click **Connect**
+5. Authorize in X
+
+## Usage
+
+```
+"Post a tweet: Excited to announce our new feature!"
+
+"DM @username about the collaboration"
+
+"What's trending on X?"
+
+"Search X for posts about AI"
+```
+
+## How It Works
+
+Wovly uses OAuth 2.0 with PKCE, posting as your account (not a bot).
+
+<Warning>
+  Tweets and DMs are public actions tied to your account. Always review before posting.
+</Warning>
+
+## Rate Limits
+
+X has strict API rate limits:
+- Tweets: 200 per 15 minutes
+- DMs: 1000 per day
+- Reads: 100 per 15 minutes
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Rate limit exceeded">
+    Wait 15 minutes and try again. Consider reducing automated posting frequency.
+  </Accordion>
+  <Accordion title="Can't DM user">
+    The user may have DMs disabled or you may not follow each other (depending on their settings).
+  </Accordion>
+  <Accordion title="OAuth error">
+    Ensure your app has OAuth 2.0 enabled and the callback URL is exact.
+  </Accordion>
+</AccordionGroup>

@@ -1,0 +1,85 @@
+---
+title: "Settings"
+description: "Configure Wovly preferences and options"
+---
+
+# Settings
+
+Configure Wovly's behavior and preferences in the **Settings** page.
+
+## LLM Configuration
+
+### API Keys
+
+Enter your API keys for LLM providers:
+
+- **Anthropic API Key**: For Claude models
+- **OpenAI API Key**: For GPT models  
+- **Google AI API Key**: For Gemini models
+
+### Active Provider
+
+Select which provider to use for conversations. You can switch anytime.
+
+## Integration Settings
+
+### Weather
+
+Toggle weather functionality on/off. Uses Open-Meteo (free, no API key required).
+
+### Browser Automation
+
+Enable/disable browser automation for web research. Requires Chrome or Chromium.
+
+## Data & Privacy
+
+### Data Location
+
+All Wovly data is stored locally:
+
+```
+~/.wovly-assistant/
+├── settings.json      # Configuration
+├── skills/            # Custom skills
+├── memory/            # Conversation history
+└── tasks/             # Task data
+```
+
+### Export Data
+
+To backup your data, copy the `~/.wovly-assistant/` folder.
+
+### Clear Data
+
+To reset Wovly:
+1. Quit Wovly
+2. Delete `~/.wovly-assistant/`
+3. Restart Wovly
+
+<Warning>
+  This deletes all settings, skills, memory, and tasks. Export first if needed.
+</Warning>
+
+## Advanced Settings
+
+### Debug Mode
+
+Enable debug mode to see detailed logs in the console. Useful for troubleshooting.
+
+### Keyboard Shortcuts
+
+| Shortcut | Action |
+|----------|--------|
+| `Cmd/Ctrl + Enter` | Send message |
+| `Cmd/Ctrl + K` | Quick command |
+| `Escape` | Cancel current action |
+
+## Integration Tokens
+
+Integration tokens are stored encrypted in `settings.json`. To revoke access:
+
+1. Click **Disconnect** on the integration in Wovly
+2. Optionally, revoke from the provider's settings:
+   - [Google Security](https://myaccount.google.com/permissions)
+   - [Slack App Management](https://slack.com/apps/manage)
+   - etc.

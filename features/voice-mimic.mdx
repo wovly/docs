@@ -1,0 +1,108 @@
+---
+title: "Voice Mimic"
+description: "Wovly learns and mimics your communication style for each recipient"
+---
+
+# Voice Mimic
+
+Wovly learns your communication style for each person you message. When drafting messages, it matches your tone, formality, and patterns so responses sound authentically like you.
+
+## How It Works
+
+When you ask Wovly to message someone:
+
+1. **Analyze History** - Wovly reads your past messages to that person
+2. **Extract Style** - Identifies patterns in tone, length, greetings, sign-offs
+3. **Generate Style Guide** - Creates a persona for messaging that contact
+4. **Apply to Draft** - Uses the style guide when composing messages
+
+## Style Elements
+
+Wovly learns:
+
+| Element | Example |
+|---------|---------|
+| **Formality** | Casual ("hey!") vs Professional ("Dear John,") |
+| **Length** | Short texts vs detailed emails |
+| **Greetings** | "Hi", "Hey", "Dear", none |
+| **Sign-offs** | "Thanks", "Best", "Cheers", "-J" |
+| **Emoji usage** | Frequent, occasional, never |
+| **Punctuation** | Multiple exclamation marks, periods only |
+
+## Example
+
+### Your past messages to Sarah:
+```
+hey! r u free for lunch tmrw?
+sounds good!! see u at noon :)
+haha yes def! cant wait
+```
+
+### Wovly's draft style:
+```
+hey sarah! wanted to check if ur still coming to the party sat?
+lmk!! :)
+```
+
+### Your past messages to Boss:
+```
+Hi Michael,
+
+Thank you for the feedback on the Q3 report. I've incorporated 
+your suggestions and attached the revised version.
+
+Best regards,
+[Name]
+```
+
+### Wovly's draft style:
+```
+Hi Michael,
+
+Following up on our discussion about the marketing budget. 
+I've prepared a summary of the proposed changes for your review.
+
+Best regards,
+[Name]
+```
+
+## Platform Adaptation
+
+Style also adapts to the platform:
+
+- **iMessage/Text**: Shorter, more casual
+- **Email**: Longer, more formal
+- **Slack**: Medium length, workplace appropriate
+- **Discord**: Casual, may include more emoji
+
+## Building Style History
+
+The more you message someone through Wovly (or have message history), the better it mimics your style:
+
+- **New contacts**: Uses your general communication profile
+- **Existing contacts**: Learns from message history
+- **Frequent contacts**: Highly personalized style
+
+## Overriding Style
+
+You can always guide the style:
+
+```
+You: Email Jeff formally about the contract
+
+Wovly: [Uses formal style even if usually casual with Jeff]
+```
+
+Or edit the draft:
+
+```
+You: Make it more casual
+
+Wovly: [Regenerates with more casual tone]
+```
+
+## Privacy
+
+<Note>
+  Style analysis happens locally. Your message history is never sent to external servers - only the LLM sees aggregated style patterns during drafting.
+</Note>

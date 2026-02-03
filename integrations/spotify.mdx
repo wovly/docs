@@ -1,0 +1,79 @@
+---
+title: "Spotify"
+description: "Control playback and browse music"
+---
+
+# Spotify
+
+Connect Spotify to control playback and browse your music library.
+
+## Capabilities
+
+- **Control playback** - Play, pause, skip tracks
+- **Get current** - See what's playing
+- **Search music** - Find songs, albums, artists
+- **Browse playlists** - View your playlists
+
+## Requirements
+
+- **Spotify Premium** - Required for playback control
+- **Active device** - Spotify must be open on a device
+
+## Setup
+
+### Step 1: Create Spotify App
+
+1. Go to [Spotify Developer Dashboard](https://developer.spotify.com/dashboard)
+2. Click **Create app**
+3. Name it "Wovly"
+4. Add Redirect URI: `http://localhost:18923/oauth/callback`
+5. Note your **Client ID** and **Client Secret**
+
+### Step 2: Connect in Wovly
+
+1. Go to **Integrations** in Wovly
+2. Click **Setup** on Spotify
+3. Enter Client ID and Client Secret
+4. Click **Connect**
+5. Authorize in Spotify
+
+## Usage
+
+```
+"What song is playing?"
+
+"Play some jazz music"
+
+"Skip to the next track"
+
+"Search Spotify for Taylor Swift"
+
+"Show my playlists"
+```
+
+## Playback Control
+
+<Note>
+  Playback control requires Spotify Premium and an active Spotify session on a device (phone, computer, speaker, etc.).
+</Note>
+
+If no device is active:
+```
+You: Play some music
+
+Wovly: No active Spotify device found. Open Spotify on a device first, then try again.
+```
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Playback not working">
+    Ensure Spotify is open and playing on a device. Wovly controls existing sessions.
+  </Accordion>
+  <Accordion title="Premium required">
+    Playback control is a Premium-only feature. Browse and search work with free accounts.
+  </Accordion>
+  <Accordion title="Device not found">
+    Start playing something on Spotify first to activate a device, then Wovly can control it.
+  </Accordion>
+</AccordionGroup>

@@ -1,0 +1,75 @@
+---
+title: "Reddit"
+description: "Create posts, comment, and browse subreddits"
+---
+
+# Reddit
+
+Connect Reddit to create posts, comment, and browse content.
+
+## Capabilities
+
+- **Create posts** - Submit to subreddits
+- **Comment** - Reply to posts and comments
+- **Browse** - Read subreddit content
+- **Search** - Find posts by keyword
+
+## Setup
+
+### Step 1: Create Reddit App
+
+1. Go to [Reddit Apps](https://www.reddit.com/prefs/apps)
+2. Click **create another app...**
+3. Select **script** type
+4. Name it "Wovly"
+5. Set redirect URI: `http://localhost:18923/oauth/callback`
+6. Note your **Client ID** (under app name) and **Client Secret**
+
+### Step 2: Connect in Wovly
+
+1. Go to **Integrations** in Wovly
+2. Click **Setup** on Reddit
+3. Enter Client ID and Client Secret
+4. Click **Connect**
+5. Authorize in Reddit
+
+## Usage
+
+```
+"Post to r/programming: Check out this cool project"
+
+"What's trending on r/technology?"
+
+"Comment on that post about AI"
+
+"Search Reddit for discussions about productivity apps"
+```
+
+## Karma Requirements
+
+Some subreddits have karma/age requirements:
+
+<Warning>
+  New accounts or those with low karma may be restricted from posting in certain subreddits. These are Reddit's rules, not Wovly's.
+</Warning>
+
+## Rate Limits
+
+Reddit enforces rate limits:
+- Posts: ~10 per hour
+- Comments: ~10 per minute
+- API calls: 60 per minute
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Can't post to subreddit">
+    Check if the subreddit has karma, age, or approval requirements.
+  </Accordion>
+  <Accordion title="Rate limited">
+    Wait a few minutes. Reddit limits how often you can post/comment.
+  </Accordion>
+  <Accordion title="OAuth error">
+    Ensure the redirect URI matches exactly in your Reddit app settings.
+  </Accordion>
+</AccordionGroup>

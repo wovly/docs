@@ -1,0 +1,82 @@
+---
+title: "Discord"
+description: "Send messages to Discord servers and DMs"
+---
+
+# Discord
+
+Connect Discord to send messages to servers and direct messages.
+
+## Capabilities
+
+- **Send messages** - Post to channels and DMs
+- **List servers** - View your Discord servers
+- **List channels** - View channels in a server
+
+## Setup
+
+### Step 1: Create Discord Application
+
+1. Go to [Discord Developer Portal](https://discord.com/developers/applications)
+2. Click **New Application**
+3. Name it "Wovly"
+4. Go to **OAuth2** section
+
+### Step 2: Configure OAuth
+
+1. Add Redirect URL: `http://localhost:18923/oauth/callback`
+2. Note your **Client ID** and **Client Secret**
+
+### Step 3: Set Scopes
+
+Required OAuth2 scopes:
+- `identify` - Get user info
+- `guilds` - List servers
+- `messages.read` - Read messages
+- `gdm.join` - Join group DMs
+
+### Step 4: Connect in Wovly
+
+1. Go to **Integrations** in Wovly
+2. Click **Setup** on Discord
+3. Enter Client ID and Client Secret
+4. Click **Connect**
+5. Authorize in Discord
+
+## Usage
+
+```
+"Send a message to #general in my Discord server"
+
+"DM John on Discord about the game tonight"
+
+"What Discord servers am I in?"
+
+"Post to the announcements channel"
+```
+
+## How It Works
+
+Wovly uses OAuth2 with user tokens, so messages appear as sent by you (not a bot).
+
+## Permissions
+
+| Permission | Why Needed |
+|------------|------------|
+| `identify` | Verify your Discord account |
+| `guilds` | List your servers |
+| `messages.read` | Read channel history |
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Can't send to channel">
+    You must have permission to send messages in that channel.
+  </Accordion>
+  <Accordion title="Server not found">
+    Ensure you're a member of the server. Wovly can only access servers you've joined.
+  </Accordion>
+  <Accordion title="OAuth error">
+    Verify the redirect URL matches exactly: `http://localhost:18923/oauth/callback`
+  </Accordion>
+</AccordionGroup>

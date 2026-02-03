@@ -1,0 +1,87 @@
+---
+title: "WhatsApp"
+description: "Control Wovly remotely from your phone via WhatsApp"
+---
+
+# WhatsApp
+
+Use WhatsApp as a remote interface to chat with Wovly from your phone. Send messages to your WhatsApp bot, and Wovly responds.
+
+## Capabilities
+
+- **Remote chat** - Message Wovly from anywhere
+- **Full access** - Same capabilities as desktop chat
+- **Mobile notifications** - Get responses on your phone
+
+## How It Works
+
+WhatsApp integration turns your WhatsApp into a chat interface:
+
+1. You message your WhatsApp bot
+2. Wovly receives the message
+3. Wovly processes it like a normal chat
+4. Response is sent back via WhatsApp
+
+## Setup
+
+### Prerequisites
+
+You need a WhatsApp Business API account with a configured webhook.
+
+### Step 1: Get WhatsApp Business API Access
+
+1. Apply at [Meta for Developers](https://developers.facebook.com)
+2. Create a WhatsApp Business Account
+3. Set up a phone number for the bot
+
+### Step 2: Configure Webhook
+
+1. Set webhook URL to your Wovly instance
+2. Subscribe to message events
+3. Note your Verify Token and Access Token
+
+### Step 3: Connect in Wovly
+
+1. Go to **Interfaces** in Wovly
+2. Click **Setup** on WhatsApp
+3. Enter your credentials
+4. Click **Connect**
+
+## Usage
+
+Once connected, message your WhatsApp bot number:
+
+```
+You (via WhatsApp): What's on my calendar today?
+
+Wovly (via WhatsApp): You have 3 events today:
+- 10:00 AM: Team standup
+- 2:00 PM: Client call
+- 4:00 PM: Review meeting
+```
+
+## Features
+
+All normal Wovly features work via WhatsApp:
+
+- Check email and calendar
+- Send messages (with approval)
+- Create tasks
+- Web research
+
+## Security
+
+<Note>
+  WhatsApp messages are processed by your local Wovly instance. Responses are sent back through WhatsApp's servers.
+</Note>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Not receiving messages">
+    Check webhook configuration. Ensure your Wovly instance is reachable from the internet.
+  </Accordion>
+  <Accordion title="Responses delayed">
+    WhatsApp has rate limits. Very frequent messages may be delayed.
+  </Accordion>
+</AccordionGroup>

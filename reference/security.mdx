@@ -1,0 +1,184 @@
+---
+title: "Security"
+description: "Security model and data privacy in Wovly"
+---
+
+# Security
+
+Wovly is designed with privacy and security as core principles.
+
+## Privacy-First Architecture
+
+### Local Data Storage
+
+All your data stays on your machine:
+
+```
+~/.wovly-assistant/
+├── settings.json      # Encrypted tokens and config
+├── skills/            # Your custom skills
+├── memory/            # Conversation history
+└── tasks/             # Task data
+```
+
+Nothing is synced to cloud servers.
+
+### No Wovly Servers
+
+Wovly doesn't operate servers that process your data:
+
+```
+Your Machine ─────────► Google/Slack/OpenAI
+             ◄─────────
+
+(No Wovly servers in between)
+```
+
+## Encryption
+
+### Token Storage
+
+Integration tokens are encrypted using your operating system's secure storage:
+
+| Platform | Encryption Method |
+|----------|-------------------|
+| macOS | Keychain |
+| Windows | DPAPI |
+| Linux | Secret Service |
+
+### Credentials
+
+Website credentials are doubly protected:
+1. Encrypted at rest using OS keychain
+2. Never sent to LLM providers
+3. Never logged or displayed in chat
+
+## LLM Privacy
+
+### What LLMs See
+
+When you chat with Wovly, your messages are sent to your chosen LLM provider:
+
+- **Anthropic** (Claude) - [Privacy Policy](https://www.anthropic.com/privacy)
+- **OpenAI** (GPT) - [Privacy Policy](https://openai.com/policies/privacy-policy)
+- **Google** (Gemini) - [Privacy Policy](https://ai.google.dev/terms)
+
+### What LLMs Don't See
+
+- Your saved credentials/passwords (never sent)
+- Raw integration tokens (only used locally)
+- Files on your computer (unless you share them)
+
+### Conversation Context
+
+The LLM receives:
+- Your current message
+- Recent conversation history (for context)
+- Tool results (when tools are called)
+- System instructions
+
+## Integration Security
+
+### OAuth Tokens
+
+- Stored encrypted locally
+- Auto-refreshed when expired
+- Revocable anytime from the service provider
+
+### Minimal Permissions
+
+Each integration requests only necessary permissions:
+
+| Integration | Permissions |
+|-------------|------------|
+| Google | gmail.modify, calendar.events |
+| Slack | User scopes only (not bot) |
+| GitHub | repo (or fine-grained) |
+
+### Token Revocation
+
+To fully disconnect an integration:
+1. Disconnect in Wovly
+2. Revoke in the service's settings (Google, Slack, etc.)
+
+## Credential Security
+
+### Secure Input
+
+Wovly never asks for passwords in chat:
+
+```
+❌ User: "my password is hunter2"
+✓ User: (saves in Credentials page)
+```
+
+If you try to share a password in chat, Wovly will stop you.
+
+### Secure Usage
+
+During browser automation:
+1. Credentials are retrieved from encrypted storage
+2. Filled directly into forms (not through LLM)
+3. Never appear in chat, logs, or responses
+
+## Best Practices
+
+### API Keys
+
+<Tip>
+  Use environment-specific API keys when possible. If a key is compromised, rotate only that key.
+</Tip>
+
+### Credentials
+
+<Tip>
+  Use app-specific passwords for services that support them (Google, Apple, etc.).
+</Tip>
+
+### Integrations
+
+<Tip>
+  Periodically review connected integrations and revoke any you no longer use.
+</Tip>
+
+### Data Cleanup
+
+<Tip>
+  Clear conversation history periodically if it contains sensitive information:
+  ```bash
+  rm -rf ~/.wovly-assistant/memory/
+  ```
+</Tip>
+
+## Threat Model
+
+### Protected Against
+
+- Remote data access (data stays local)
+- Credential leakage to LLMs
+- Token theft (encrypted storage)
+- Man-in-the-middle (HTTPS for all APIs)
+
+### Not Protected Against
+
+- Local machine compromise (if someone has your machine)
+- Malicious LLM provider (trust your provider)
+- Social engineering (always verify before approving messages)
+
+## Reporting Issues
+
+If you discover a security issue:
+
+1. **Do not** post publicly
+2. Email security concerns to the project maintainers
+3. Provide details to help reproduce
+
+## Audit Trail
+
+Wovly logs actions for your reference:
+
+- Task execution logs
+- Message send history
+- Integration connection/disconnection
+
+Logs are stored locally in `~/.wovly-assistant/` and can be deleted anytime.

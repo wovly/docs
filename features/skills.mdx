@@ -1,0 +1,201 @@
+---
+title: "Skills"
+description: "Create custom workflows and communication patterns"
+---
+
+# Skills
+
+Skills are reusable procedures that define how Wovly handles specific types of tasks. Think of them as playbooks - custom workflows tailored to your communication style and needs.
+
+## What Are Skills?
+
+Skills are markdown files that describe:
+
+- **When** to use the skill (trigger conditions)
+- **What** steps to follow
+- **How** to communicate in each step
+- **Templates** for common messages
+
+```markdown
+# Email Drafting Skill
+
+## Trigger
+When the user asks to draft or send an email.
+
+## Steps
+1. Identify the recipient and purpose
+2. Check conversation history for context
+3. Draft the email matching the user's voice
+4. Present for approval before sending
+
+## Guidelines
+- Match formality to the relationship
+- Keep subject lines concise
+- Include relevant context from recent conversations
+```
+
+## Built-in Skills
+
+Wovly comes with several pre-configured skills:
+
+| Skill | Description |
+|-------|-------------|
+| Email Drafting | Smart email composition with voice matching |
+| Meeting Scheduling | Back-and-forth availability negotiation |
+| Research | Web research and data gathering |
+| Follow-up | Persistent outreach campaigns |
+
+## Viewing Skills
+
+Go to the **Skills** page to see all available skills:
+
+- View skill details and procedures
+- Edit built-in skills to customize
+- Create new custom skills
+
+## Creating Custom Skills
+
+### Step 1: Create New Skill
+
+1. Go to **Skills** page
+2. Click **Create**
+3. Give it a descriptive name
+
+### Step 2: Define the Skill
+
+Use markdown to define the procedure:
+
+````markdown
+# Vendor Outreach
+
+## Description
+Contact service providers to request quotes and availability.
+
+## Trigger
+When the user asks to contact vendors, contractors, or service providers.
+
+## Steps
+1. Identify the type of service needed
+2. Use web research to find local providers if not specified
+3. Collect contact information
+4. Draft personalized emails using the template below
+5. Present draft for approval
+6. Send emails upon approval
+7. Track responses and follow up after 3 days if no reply
+
+## Templates
+
+### Initial Contact
+```
+Subject: Quote Request for [Service Type]
+
+Hi,
+
+I'm looking for a [service type] provider in [location]. 
+Could you please let me know your availability and pricing?
+
+Here's what I need:
+- [Specific requirements]
+- Preferred timeframe: [timeframe]
+
+Thank you,
+[User Name]
+```
+
+## Guidelines
+- Be professional but friendly
+- Include specific requirements for accurate quotes
+- Follow up no more than 3 times
+````
+
+### Step 3: Save
+
+Click **Save** to create the skill. It's immediately available for use.
+
+## Skill Variables
+
+Use variables in templates that get replaced at runtime:
+
+| Variable | Description |
+|----------|-------------|
+| `[User Name]` | Your name from profile |
+| `[User Email]` | Your email address |
+| `[User Phone]` | Your phone number |
+| `[Recipient]` | The message recipient |
+| `[Today]` | Current date |
+| `[Subject]` | Inferred subject/topic |
+
+## How Skills Are Used
+
+### Automatic Selection
+
+Wovly automatically selects the appropriate skill based on your request:
+
+```
+You: Email the plumbers about the leak
+
+Wovly: [Uses "Vendor Outreach" skill]
+       I'll draft emails to the plumbers using the vendor outreach template...
+```
+
+### Manual Override
+
+You can specify which skill to use:
+
+```
+You: Use the research skill to find information about X
+```
+
+## Editing Skills
+
+### Modify Built-in Skills
+
+Built-in skills can be customized:
+
+1. Click on a skill
+2. Click **Edit**
+3. Modify the markdown
+4. Click **Save**
+
+<Note>
+  Changes to built-in skills are stored locally and won't be overwritten by updates.
+</Note>
+
+### Restore Default
+
+To restore a built-in skill to its original:
+
+1. Click on the skill
+2. Click **Restore Default**
+
+## Sharing Skills
+
+Skills are stored in `~/.wovly-assistant/skills/` as markdown files.
+
+To share a skill:
+1. Navigate to `~/.wovly-assistant/skills/`
+2. Copy the `.md` file
+3. Share via email, GitHub gist, etc.
+
+To import a skill:
+1. Save the `.md` file to `~/.wovly-assistant/skills/`
+2. Restart Wovly
+3. The skill appears in the Skills page
+
+## Best Practices
+
+<Tip>
+  **Keep skills focused** - One skill should handle one type of task
+</Tip>
+
+<Tip>
+  **Write clear triggers** - Good triggers help Wovly know when to use the skill
+</Tip>
+
+<Tip>
+  **Include templates** - Templates ensure consistent, high-quality output
+</Tip>
+
+<Tip>
+  **Document edge cases** - Use the Guidelines section for unusual situations
+</Tip>

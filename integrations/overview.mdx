@@ -1,0 +1,177 @@
+---
+title: "Integrations Overview"
+description: "Connect Wovly to your communication platforms and services"
+---
+
+# Integrations Overview
+
+Wovly connects to your existing communication platforms to read, send, and manage messages across all your channels from a single interface.
+
+## Available Integrations
+
+### Communication Platforms
+
+<CardGroup cols={2}>
+  <Card title="Google Workspace" icon="google" href="/integrations/google-workspace">
+    **Gmail & Calendar**
+    
+    Read and send emails, manage calendar events, schedule meetings automatically.
+  </Card>
+  <Card title="Slack" icon="slack" href="/integrations/slack">
+    **Messages & Channels**
+    
+    Send DMs, post to channels, search conversations.
+  </Card>
+  <Card title="iMessage" icon="message" href="/integrations/imessage">
+    **Native macOS Texting**
+    
+    Send and read iMessages directly from Wovly.
+  </Card>
+  <Card title="Discord" icon="discord" href="/integrations/discord">
+    **Servers & DMs**
+    
+    Send messages to channels and users.
+  </Card>
+  <Card title="Telegram" icon="paper-plane" href="/integrations/telegram">
+    **Bot Messaging**
+    
+    Send messages and use as a chat interface.
+  </Card>
+  <Card title="WhatsApp" icon="whatsapp" href="/integrations/whatsapp">
+    **Remote Control**
+    
+    Control Wovly from your phone via WhatsApp.
+  </Card>
+</CardGroup>
+
+### Social & Content
+
+<CardGroup cols={2}>
+  <Card title="X (Twitter)" icon="x-twitter" href="/integrations/x-twitter">
+    **Tweets & DMs**
+    
+    Post tweets, send DMs, search content.
+  </Card>
+  <Card title="Reddit" icon="reddit" href="/integrations/reddit">
+    **Posts & Comments**
+    
+    Create posts, comment, browse subreddits.
+  </Card>
+</CardGroup>
+
+### Productivity
+
+<CardGroup cols={2}>
+  <Card title="Notion" icon="note-sticky" href="/integrations/notion">
+    **Pages & Databases**
+    
+    Search and create content in Notion.
+  </Card>
+  <Card title="GitHub" icon="github" href="/integrations/github">
+    **Repos & Issues**
+    
+    Manage repositories, issues, and pull requests.
+  </Card>
+  <Card title="Asana" icon="list-check" href="/integrations/asana">
+    **Tasks & Projects**
+    
+    Create and manage tasks in Asana.
+  </Card>
+  <Card title="Spotify" icon="spotify" href="/integrations/spotify">
+    **Music Control**
+    
+    Control playback and browse music.
+  </Card>
+</CardGroup>
+
+### Utilities
+
+<CardGroup cols={2}>
+  <Card title="Browser Automation" icon="browser" href="/integrations/browser-automation">
+    **Web Research**
+    
+    Navigate websites, fill forms, extract data.
+  </Card>
+  <Card title="Credentials" icon="key" href="/integrations/credentials">
+    **Secure Logins**
+    
+    Store website credentials for automated login.
+  </Card>
+</CardGroup>
+
+## Integration Status
+
+Check your integration status in the **Integrations** page:
+
+| Status | Meaning |
+|--------|---------|
+| **Connected** | Integration is active and working |
+| **Needs Reauth** | Token expired, needs re-authorization |
+| **Not Connected** | Integration not set up |
+
+## How Integrations Work
+
+### Authentication Flow
+
+Most integrations use OAuth 2.0:
+
+1. Click **Connect** on the integration
+2. Sign in to the service
+3. Authorize Wovly to access your account
+4. Token is stored locally
+
+### Data Flow
+
+<Note>
+  **All data stays local.** Wovly stores integration tokens in `~/.wovly-assistant/settings.json`. API calls go directly from your machine to the service provider.
+</Note>
+
+```
+Your Machine                    Service Provider
+┌──────────────┐               ┌──────────────┐
+│    Wovly     │ ──API Call──► │   Google     │
+│              │               │   Slack      │
+│ settings.json│               │   etc.       │
+│ (tokens)     │ ◄──Response── │              │
+└──────────────┘               └──────────────┘
+```
+
+## Auto-Reconnection
+
+Wovly automatically reconnects integrations when you restart the app:
+
+- OAuth tokens are refreshed if expired
+- Connections are verified on startup
+- You'll be notified if re-authorization is needed
+
+## Security
+
+### Token Storage
+
+- Tokens stored in `~/.wovly-assistant/settings.json`
+- Credentials encrypted using system keychain (Electron safeStorage)
+
+### Revoking Access
+
+To disconnect an integration:
+
+1. Go to **Integrations** in Wovly
+2. Click **Disconnect** on the integration
+3. Optionally, revoke access from the provider's security settings
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Integration shows 'Connected' but doesn't work">
+    The token may have expired. Try:
+    1. Click **Disconnect**
+    2. Wait 5 seconds
+    3. Click **Connect** to re-authorize
+  </Accordion>
+  <Accordion title="OAuth redirect fails">
+    Ensure your firewall allows localhost connections. Wovly uses `localhost:18923` for OAuth callbacks.
+  </Accordion>
+  <Accordion title="Missing permissions error">
+    Disconnect and reconnect, ensuring you approve all requested permissions.
+  </Accordion>
+</AccordionGroup>

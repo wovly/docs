@@ -1,0 +1,112 @@
+---
+title: "Installation"
+description: "Detailed installation instructions for all platforms"
+---
+
+# Installation
+
+## System Requirements
+
+- **macOS**: 10.15 (Catalina) or later
+- **Windows**: Windows 10 or later
+- **Linux**: Ubuntu 20.04+ or equivalent
+
+### For iMessage Integration (macOS only)
+- Full Disk Access permission
+- Contacts access permission
+
+### For Browser Automation
+- Chrome or Chromium installed
+
+## Download
+
+Download the latest release from [GitHub Releases](https://github.com/bluerune234/wovly/releases).
+
+| Platform | File | Notes |
+|----------|------|-------|
+| macOS (Intel) | `Wovly-x.x.x.dmg` | For older Macs |
+| macOS (Apple Silicon) | `Wovly-x.x.x-arm64.dmg` | For M1/M2/M3 Macs |
+| Windows | `Wovly-Setup-x.x.x.exe` | Installer |
+| Linux | `Wovly-x.x.x.AppImage` | Portable |
+
+## macOS Installation
+
+1. Download the `.dmg` file for your architecture
+2. Open the `.dmg` and drag Wovly to Applications
+3. Launch Wovly from Applications
+
+### Troubleshooting macOS
+
+<AccordionGroup>
+  <Accordion title="App is damaged and can't be opened">
+    This happens with unsigned apps. Run in Terminal:
+    ```bash
+    xattr -cr /Applications/Wovly.app
+    ```
+  </Accordion>
+  <Accordion title="Can't be opened because Apple cannot check for malicious software">
+    Right-click the app and select "Open", then click "Open" in the dialog.
+  </Accordion>
+</AccordionGroup>
+
+## Windows Installation
+
+1. Download the `.exe` installer
+2. Run the installer and follow prompts
+3. Wovly will be available in the Start menu
+
+## Linux Installation
+
+1. Download the `.AppImage` file
+2. Make it executable:
+   ```bash
+   chmod +x Wovly-x.x.x.AppImage
+   ```
+3. Run the AppImage:
+   ```bash
+   ./Wovly-x.x.x.AppImage
+   ```
+
+## Data Location
+
+Wovly stores all data locally:
+
+| Platform | Location |
+|----------|----------|
+| macOS | `~/.wovly-assistant/` |
+| Windows | `%APPDATA%/wovly-assistant/` |
+| Linux | `~/.wovly-assistant/` |
+
+### Data Files
+
+```
+~/.wovly-assistant/
+├── settings.json      # API keys, integration tokens
+├── skills/            # Custom skill definitions
+├── memory/
+│   ├── daily/         # Daily conversation logs
+│   └── longterm/      # Summarized history
+└── tasks/             # Active and completed tasks
+```
+
+## Updating
+
+Wovly will notify you when updates are available. To update:
+
+1. Download the new version from GitHub Releases
+2. Install over the existing version
+3. Your data and settings are preserved
+
+## Uninstalling
+
+### macOS
+1. Drag Wovly from Applications to Trash
+2. Optionally delete data: `rm -rf ~/.wovly-assistant`
+
+### Windows
+1. Use "Add or Remove Programs" in Settings
+2. Optionally delete data in `%APPDATA%/wovly-assistant`
+
+### Linux
+1. Delete the AppImage file
+2. Optionally delete data: `rm -rf ~/.wovly-assistant`

@@ -1,0 +1,111 @@
+---
+title: "Browser Automation"
+description: "Navigate websites, fill forms, and extract data"
+---
+
+# Browser Automation
+
+Browser automation lets Wovly browse the web, fill forms, and extract information for you.
+
+## Capabilities
+
+- **Navigate** - Open and browse websites
+- **Click** - Interact with page elements
+- **Type** - Fill in forms and search boxes
+- **Extract** - Read content from pages
+- **Screenshot** - Capture page visuals
+- **Login** - Use saved credentials securely
+
+## Requirements
+
+- **Chrome or Chromium** - Must be installed
+- **Browser enabled** - Toggle in Settings
+
+## Setup
+
+1. Ensure Chrome or Chromium is installed
+2. Go to **Settings** in Wovly
+3. Enable **Browser Automation**
+
+## Usage
+
+```
+"Find flights from NYC to London in March"
+
+"Search Amazon for wireless headphones under $100"
+
+"What's the weather in Tokyo?"
+
+"Fill out the contact form on example.com"
+```
+
+## How It Works
+
+Wovly uses the Chrome DevTools Protocol (CDP) to control a browser instance:
+
+1. Opens a Chrome window (you can watch it navigate)
+2. Takes actions (click, type, scroll)
+3. Captures screenshots for context
+4. Reports findings back to you
+
+## Credential Security
+
+For websites requiring login:
+
+1. Save credentials in the **Credentials** page first
+2. Wovly auto-fills using secure placeholders
+3. Actual passwords never appear in chat or logs
+
+```
+You: Log into my bank and check my balance
+
+Wovly: [Uses saved credentials for bank.com]
+       [Fills login form securely]
+       Your current balance is $X,XXX.XX
+```
+
+<Warning>
+  Never share passwords in chat. Use the Credentials page to store logins securely.
+</Warning>
+
+## Browser Tools
+
+| Tool | Action |
+|------|--------|
+| `browser_navigate` | Open a URL |
+| `browser_click` | Click an element |
+| `browser_type` | Type text into a field |
+| `browser_scroll` | Scroll the page |
+| `browser_snapshot` | Capture current state |
+| `browser_back` | Go to previous page |
+
+## Tips
+
+<Tip>
+  **Be specific** - "Find flights on Google Flights" works better than "find flights"
+</Tip>
+
+<Tip>
+  **Watch the browser** - You can see what Wovly is doing in the Chrome window
+</Tip>
+
+<Tip>
+  **Use for research** - Great for price comparisons, finding information, filling forms
+</Tip>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Browser not opening">
+    Ensure Chrome or Chromium is installed. Check Settings to verify browser automation is enabled.
+  </Accordion>
+  <Accordion title="Page not loading">
+    Some sites block automation. Try a different approach or site.
+  </Accordion>
+  <Accordion title="Can't click element">
+    The element may be hidden or require scrolling. Ask Wovly to scroll first.
+  </Accordion>
+  <Accordion title="Login failing">
+    Ensure credentials are saved in the Credentials page with the correct domain.
+  </Accordion>
+</AccordionGroup>

@@ -1,0 +1,132 @@
+---
+title: "FAQ"
+description: "Frequently asked questions about Wovly"
+---
+
+# FAQ
+
+Frequently asked questions about Wovly.
+
+## General
+
+<AccordionGroup>
+  <Accordion title="What is Wovly?">
+    Wovly is an autonomous communication agent - a privacy-focused AI assistant that manages your inbox, replies, and follow-ups across Email, Slack, iMessage, and more.
+  </Accordion>
+
+  <Accordion title="Is Wovly free?">
+    Wovly is open source and free to use. However, you need API keys for LLM providers (Anthropic, OpenAI, or Google), which have their own pricing.
+  </Accordion>
+
+  <Accordion title="Which LLM provider should I use?">
+    We recommend **Anthropic Claude Sonnet** for the best balance of quality and speed. OpenAI GPT-4o and Google Gemini Pro are also excellent options.
+  </Accordion>
+
+  <Accordion title="Does Wovly work offline?">
+    No. Wovly requires internet access to communicate with LLM APIs and integration services.
+  </Accordion>
+
+  <Accordion title="What platforms does Wovly support?">
+    Wovly runs on macOS, Windows, and Linux. Some features (like iMessage) are platform-specific.
+  </Accordion>
+</AccordionGroup>
+
+## Privacy & Security
+
+<AccordionGroup>
+  <Accordion title="Where is my data stored?">
+    All data is stored locally on your machine in `~/.wovly-assistant/`. Nothing is synced to cloud servers.
+  </Accordion>
+
+  <Accordion title="Does Wovly see my passwords?">
+    No. Credentials are stored encrypted and used directly for browser automation. They are never sent to LLM providers or displayed in chat.
+  </Accordion>
+
+  <Accordion title="Can I delete my data?">
+    Yes. Delete the `~/.wovly-assistant/` folder to remove all Wovly data, or selectively delete memory/task files.
+  </Accordion>
+
+  <Accordion title="Does Wovly have servers?">
+    No. Wovly is a desktop application. All API calls go directly from your machine to service providers (Google, Slack, LLM APIs).
+  </Accordion>
+</AccordionGroup>
+
+## Features
+
+<AccordionGroup>
+  <Accordion title="What are Tasks?">
+    Tasks are autonomous background workflows that execute over time. They're great for scheduling meetings (back-and-forth negotiation), following up on emails, and coordinating with multiple people.
+  </Accordion>
+
+  <Accordion title="What are Skills?">
+    Skills are reusable procedures that define how Wovly handles specific types of requests. They include steps, templates, and guidelines.
+  </Accordion>
+
+  <Accordion title="Can Wovly browse the web?">
+    Yes! With browser automation enabled, Wovly can navigate websites, fill forms, search for information, and extract data.
+  </Accordion>
+
+  <Accordion title="Does Wovly learn my writing style?">
+    Yes. Wovly analyzes your past messages to each recipient and mimics your tone, formality, and patterns when drafting messages.
+  </Accordion>
+</AccordionGroup>
+
+## Integrations
+
+<AccordionGroup>
+  <Accordion title="Why do I need to create my own OAuth apps?">
+    For integrations like Google and Slack, you need your own OAuth credentials because Wovly acts as YOU (not a bot). This ensures messages appear as sent by you and you have full control over permissions.
+  </Accordion>
+
+  <Accordion title="Why isn't LinkedIn supported?">
+    LinkedIn's API is highly restricted and doesn't allow the functionality Wovly would need. Their terms prohibit automation of messaging and most data access.
+  </Accordion>
+
+  <Accordion title="Can I connect multiple accounts?">
+    Currently, Wovly supports one account per integration type. Multi-account support may come in future versions.
+  </Accordion>
+
+  <Accordion title="What happens if my token expires?">
+    Wovly automatically refreshes OAuth tokens. If refresh fails, you'll be prompted to reconnect the integration.
+  </Accordion>
+</AccordionGroup>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Wovly is slow">
+    Response time depends on the LLM provider. Claude and GPT-4o are generally fastest. Check your internet connection and try a different model if needed.
+  </Accordion>
+
+  <Accordion title="Integration shows connected but doesn't work">
+    Try disconnecting and reconnecting. If that doesn't work, check that all required permissions were granted during OAuth.
+  </Accordion>
+
+  <Accordion title="Messages not sending">
+    Check that the integration is connected and you've approved the message in the confirmation dialog. For iMessage, ensure Full Disk Access is granted.
+  </Accordion>
+
+  <Accordion title="Browser automation not working">
+    Ensure Chrome or Chromium is installed and browser automation is enabled in Settings. Some websites block automation.
+  </Accordion>
+
+  <Accordion title="Where can I get help?">
+    Check the [Troubleshooting guide](/reference/troubleshooting), open an issue on [GitHub](https://github.com/bluerune234/wovly), or ask in the community Discord.
+  </Accordion>
+</AccordionGroup>
+
+## Development
+
+<AccordionGroup>
+  <Accordion title="Is Wovly open source?">
+    Yes! Wovly is open source and available on [GitHub](https://github.com/bluerune234/wovly).
+  </Accordion>
+
+  <Accordion title="How can I contribute?">
+    Check out the GitHub repository for contribution guidelines. We welcome bug reports, feature requests, and pull requests.
+  </Accordion>
+
+  <Accordion title="Can I build my own integrations?">
+    Yes! Integrations are defined in the main process. Check the codebase for examples of how existing integrations work.
+  </Accordion>
+</AccordionGroup>

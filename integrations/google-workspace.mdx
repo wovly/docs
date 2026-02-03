@@ -1,0 +1,115 @@
+---
+title: "Google Workspace"
+description: "Connect Gmail and Google Calendar to Wovly"
+---
+
+# Google Workspace
+
+Connect Google Workspace to read and send emails via Gmail and manage your calendar.
+
+## Capabilities
+
+- **Read emails** - Search and read your inbox
+- **Send emails** - Compose and send emails as yourself
+- **Calendar** - View events, create meetings, check availability
+- **Contacts** - Look up contacts for email addresses
+
+## Setup
+
+### Prerequisites
+
+You need a Google Cloud project with OAuth credentials. This is required because Wovly needs to act as you (not a bot).
+
+### Step 1: Create Google Cloud Project
+
+1. Go to [Google Cloud Console](https://console.cloud.google.com)
+2. Create a new project or select existing
+3. Enable these APIs:
+   - Gmail API
+   - Google Calendar API
+
+### Step 2: Configure OAuth Consent Screen
+
+1. Go to **APIs & Services** > **OAuth consent screen**
+2. Select **External** user type
+3. Fill in app information:
+   - App name: "Wovly" (or your preference)
+   - User support email: Your email
+   - Developer contact: Your email
+4. Add scopes:
+   - `https://www.googleapis.com/auth/gmail.modify`
+   - `https://www.googleapis.com/auth/calendar.events`
+5. Add your email as a test user
+
+### Step 3: Create OAuth Credentials
+
+1. Go to **APIs & Services** > **Credentials**
+2. Click **Create Credentials** > **OAuth client ID**
+3. Select **Desktop app**
+4. Name it "Wovly Desktop"
+5. Copy the **Client ID** and **Client Secret**
+
+### Step 4: Connect in Wovly
+
+1. Go to **Integrations** in Wovly
+2. Click **Setup** on Google Workspace
+3. Paste your Client ID and Client Secret
+4. Click **Connect**
+5. Sign in with your Google account
+6. Authorize the requested permissions
+
+## Usage
+
+### Email
+
+```
+"Show my unread emails"
+
+"Email jeff@example.com about the meeting"
+
+"Search emails from Sarah last week"
+
+"Reply to the email from John"
+```
+
+### Calendar
+
+```
+"What's on my calendar today?"
+
+"Schedule a meeting with Jeff tomorrow at 2pm"
+
+"When am I free this week?"
+
+"Create an event for Friday at 3pm called Team Sync"
+```
+
+## Permissions Explained
+
+| Permission | Why Needed |
+|------------|------------|
+| `gmail.modify` | Read and send emails |
+| `calendar.events` | View and create calendar events |
+
+<Note>
+  Wovly requests the minimum permissions needed. Your emails and calendar data are only accessed when you ask Wovly to do something with them.
+</Note>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="OAuth error: App not verified">
+    For personal use, this is fine - click "Advanced" then "Go to [App Name]". For production, you'd need to verify the app with Google.
+  </Accordion>
+  <Accordion title="Token expired">
+    Wovly automatically refreshes tokens. If it fails, disconnect and reconnect the integration.
+  </Accordion>
+  <Accordion title="Can't find emails">
+    Gmail API returns recent emails by default. Use specific search terms: "emails from sarah" or "emails about budget"
+  </Accordion>
+</AccordionGroup>
+
+## Revoking Access
+
+1. In Wovly: Click **Disconnect** on Google Workspace
+2. In Google: Go to [Google Security](https://myaccount.google.com/permissions) and remove Wovly

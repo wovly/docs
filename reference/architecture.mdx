@@ -1,0 +1,215 @@
+---
+title: "Architecture"
+description: "Technical architecture of Wovly"
+---
+
+# Architecture
+
+Wovly is an Electron-based desktop application with a privacy-first architecture.
+
+## Overview
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                     Wovly Desktop App                       │
+├─────────────────────────────────────────────────────────────┤
+│  ┌─────────────────┐    ┌─────────────────────────────────┐ │
+│  │   UI (React)    │◄──►│      Main Process (Node.js)     │ │
+│  │                 │    │                                 │ │
+│  │  - Chat         │    │  - LLM Integration             │ │
+│  │  - Tasks        │    │  - Tool Execution              │ │
+│  │  - Skills       │    │  - Memory Management           │ │
+│  │  - Settings     │    │  - Integration APIs            │ │
+│  │  - Integrations │    │  - Task Scheduler              │ │
+│  └─────────────────┘    └─────────────────────────────────┘ │
+└─────────────────────────────────────────────────────────────┘
+           │                         │
+           │                         │
+           ▼                         ▼
+    ┌──────────────┐         ┌──────────────┐
+    │ Local Files  │         │  External    │
+    │              │         │  Services    │
+    │ - settings   │         │              │
+    │ - memory     │         │ - LLM APIs   │
+    │ - skills     │         │ - Google     │
+    │ - tasks      │         │ - Slack      │
+    └──────────────┘         │ - etc.       │
+                             └──────────────┘
+```
+
+## Components
+
+### UI Layer (Renderer Process)
+
+Built with React and TypeScript:
+- **Chat**: Main interaction interface
+- **Tasks**: Task management and monitoring
+- **Skills**: Skill viewing and editing
+- **Integrations**: Connection management
+- **Settings**: Configuration
+
+### Main Process
+
+Node.js backend handling:
+- **LLM Integration**: Anthropic, OpenAI, Google APIs
+- **Tool Execution**: Running tools for the LLM
+- **Memory**: Conversation storage and retrieval
+- **Task Scheduler**: Background task execution
+- **IPC**: Communication with renderer
+
+### Data Storage
+
+All local, in `~/.wovly-assistant/`:
+
+```
+~/.wovly-assistant/
+├── settings.json      # Configuration, tokens (encrypted)
+├── skills/            # Skill markdown files
+│   ├── email-drafting.md
+│   └── scheduling.md
+├── memory/
+│   ├── daily/         # Daily conversation logs
+│   │   └── 2024-01-15.md
+│   └── longterm/      # Summarized history
+└── tasks/
+    └── task-abc123.json
+```
+
+## Data Flow
+
+### Chat Request
+
+```
+User Input
+    │
+    ▼
+┌─────────────────┐
+│ Query Analysis  │  ← Skill matching, entity extraction
+└─────────────────┘
+    │
+    ▼
+┌─────────────────┐
+│ Context Loading │  ← Profile, memory, conversation history
+└─────────────────┘
+    │
+    ▼
+┌─────────────────┐
+│   LLM Call      │  ← System prompt + user message + tools
+└─────────────────┘
+    │
+    ▼
+┌─────────────────┐
+│ Tool Execution  │  ← Execute any tools the LLM calls
+└─────────────────┘
+    │
+    ▼
+Response to User
+```
+
+### Task Execution
+
+```
+Task Created
+    │
+    ▼
+┌─────────────────┐
+│ Task Scheduler  │  ← Runs every minute
+└─────────────────┘
+    │
+    ▼
+┌─────────────────┐
+│ Check Due Tasks │  ← Is it time to run?
+└─────────────────┘
+    │
+    ▼
+┌─────────────────┐
+│ Task Executor   │  ← LLM with task context + tools
+└─────────────────┘
+    │
+    ▼
+┌─────────────────┐
+│ Update State    │  ← Save results, schedule next check
+└─────────────────┘
+```
+
+## Integration Architecture
+
+### OAuth Flow
+
+```
+User clicks "Connect"
+        │
+        ▼
+┌─────────────────┐
+│ Local Server    │  ← Starts on localhost:18923
+└─────────────────┘
+        │
+        ▼
+┌─────────────────┐
+│ OAuth Redirect  │  ← Opens browser to service
+└─────────────────┘
+        │
+        ▼
+┌─────────────────┐
+│ User Authorizes │  ← In browser
+└─────────────────┘
+        │
+        ▼
+┌─────────────────┐
+│ Callback        │  ← Service redirects to localhost
+└─────────────────┘
+        │
+        ▼
+┌─────────────────┐
+│ Token Exchange  │  ← Get access + refresh tokens
+└─────────────────┘
+        │
+        ▼
+┌─────────────────┐
+│ Store Locally   │  ← Encrypted in settings.json
+└─────────────────┘
+```
+
+### API Calls
+
+All API calls go directly from your machine:
+
+```
+Wovly (your machine) ──────► Google/Slack/etc.
+                      ◄──────
+```
+
+No data passes through Wovly servers.
+
+## Security Model
+
+### Local-First
+
+- All data stored locally
+- Tokens encrypted with OS keychain
+- No cloud sync or backup
+
+### LLM Privacy
+
+- Conversations sent to chosen LLM provider
+- No Wovly servers involved
+- You control which provider sees your data
+
+### Credential Security
+
+- Stored encrypted locally
+- Never sent to LLMs
+- Only used during browser automation
+- Never logged or displayed
+
+## Tech Stack
+
+| Component | Technology |
+|-----------|------------|
+| Framework | Electron |
+| UI | React + TypeScript |
+| Styling | CSS |
+| Backend | Node.js |
+| LLM | Anthropic/OpenAI/Google APIs |
+| Browser Automation | Chrome DevTools Protocol |
+| Storage | Local JSON/Markdown files |

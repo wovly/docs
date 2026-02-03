@@ -1,0 +1,100 @@
+---
+title: "Telegram"
+description: "Send messages via Telegram bot and use as a chat interface"
+---
+
+# Telegram
+
+Connect Telegram to send messages through a bot and optionally use Telegram as a chat interface to control Wovly.
+
+## Capabilities
+
+### As Integration
+- **Send messages** - Send messages through your Telegram bot
+- **Get updates** - Receive messages sent to your bot
+
+### As Chat Interface
+- **Remote control** - Chat with Wovly via Telegram from your phone
+- **Full access** - Same capabilities as desktop chat
+- **Mobile notifications** - Get responses on your phone
+
+## Setup
+
+### Step 1: Create a Telegram Bot
+
+1. Open Telegram and message [@BotFather](https://t.me/botfather)
+2. Send `/newbot`
+3. Follow prompts to name your bot
+4. Copy the **Bot Token** you receive
+
+### Step 2: Connect in Wovly
+
+1. Go to **Integrations** in Wovly
+2. Click **Setup** on Telegram
+3. Paste your Bot Token
+4. Click **Connect**
+
+### Step 3: Test the Connection
+
+Click **Test** to verify the bot is working.
+
+## Using as Chat Interface
+
+To use Telegram to chat with Wovly remotely:
+
+1. Go to **Interfaces** in Wovly
+2. Find **Telegram** section
+3. Click **Connect**
+4. Wovly will start listening for messages to your bot
+
+Now you can message your bot on Telegram and Wovly will respond!
+
+```
+You (Telegram): What meetings do I have tomorrow?
+
+Wovly (Telegram): You have 2 meetings tomorrow:
+- 10:00 AM: Product Review
+- 3:00 PM: 1:1 with Manager
+```
+
+## Usage as Integration
+
+Use Telegram to send messages to others:
+
+```
+"Send a Telegram message to @username about the project"
+
+"Message the team channel on Telegram"
+```
+
+<Note>
+  Bot-sent messages will appear as from your bot, not your personal account. Recipients need to have started a conversation with your bot.
+</Note>
+
+## How It Works
+
+### Integration Mode
+Wovly sends messages using the Telegram Bot API.
+
+### Chat Interface Mode
+Wovly uses long-polling to check for messages to your bot. When you message the bot, Wovly processes it and replies.
+
+## Security
+
+- Bot token stored locally in `settings.json`
+- Messages go through Telegram's servers
+- Chat interface can be disabled anytime
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Bot not responding">
+    Ensure the bot token is correct. Try regenerating the token via @BotFather.
+  </Accordion>
+  <Accordion title="Can't send to user">
+    Users must message your bot first to start a conversation. Bots can't initiate DMs.
+  </Accordion>
+  <Accordion title="Chat interface not working">
+    Check that Telegram is connected in both Integrations AND Interfaces pages.
+  </Accordion>
+</AccordionGroup>

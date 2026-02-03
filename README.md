@@ -1,43 +1,88 @@
-# Mintlify Starter Kit
+# Wovly Documentation
 
-Use the starter kit to get your docs deployed and ready to customize.
+Documentation for Wovly - your autonomous communication agent.
 
-Click the green **Use this template** button at the top of this repo to copy the Mintlify starter kit. The starter kit contains examples with
+## Structure
 
-- Guide pages
-- Navigation
-- Customizations
-- API reference pages
-- Use of popular components
-
-**[Follow the full quickstart guide](https://starter.mintlify.com/quickstart)**
+```
+docs/
+├── docs.json              # Mintlify configuration
+├── index.mdx              # Home page
+├── quickstart.mdx         # Getting started
+├── installation.mdx       # Installation guide
+│
+├── features/              # Feature documentation
+│   ├── chat.mdx
+│   ├── tasks.mdx
+│   ├── skills.mdx
+│   ├── memory.mdx
+│   ├── voice-mimic.mdx
+│   ├── llm-providers.mdx
+│   └── settings.mdx
+│
+├── integrations/          # Integration guides
+│   ├── overview.mdx
+│   ├── google-workspace.mdx
+│   ├── slack.mdx
+│   ├── imessage.mdx
+│   ├── whatsapp.mdx
+│   ├── telegram.mdx
+│   ├── discord.mdx
+│   ├── x-twitter.mdx
+│   ├── notion.mdx
+│   ├── github.mdx
+│   ├── asana.mdx
+│   ├── reddit.mdx
+│   ├── spotify.mdx
+│   ├── browser-automation.mdx
+│   └── credentials.mdx
+│
+└── reference/             # Technical reference
+    ├── architecture.mdx
+    ├── tools.mdx
+    ├── security.mdx
+    ├── faq.mdx
+    └── troubleshooting.mdx
+```
 
 ## Development
 
-Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview your documentation changes locally. To install, use the following command:
+### Prerequisites
 
-```
-npm i -g mint
-```
+Install the [Mintlify CLI](https://www.npmjs.com/package/mintlify):
 
-Run the following command at the root of your documentation, where your `docs.json` is located:
-
-```
-mint dev
+```bash
+npm i -g mintlify
 ```
 
-View your local preview at `http://localhost:3000`.
+### Running locally
 
-## Publishing changes
+```bash
+cd docs
+mintlify dev
+```
 
-Install our GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app) to propagate changes from your repo to your deployment. Changes are deployed to production automatically after pushing to the default branch.
+Open http://localhost:3000 to preview.
 
-## Need help?
+### Deployment
 
-### Troubleshooting
+Docs are automatically deployed to Mintlify when pushed to the main branch.
 
-- If your dev environment isn't running: Run `mint update` to ensure you have the most recent version of the CLI.
-- If a page loads as a 404: Make sure you are running in a folder with a valid `docs.json`.
+## Adding Documentation
 
-### Resources
-- [Mintlify documentation](https://mintlify.com/docs)
+1. Create a new `.mdx` file in the appropriate folder
+2. Add frontmatter with `title` and `description`
+3. Add the page path to `docs.json` navigation
+4. Preview locally with `mintlify dev`
+
+## MDX Components
+
+Mintlify supports various components:
+
+- `<Card>` / `<CardGroup>` - Feature cards
+- `<Accordion>` / `<AccordionGroup>` - Collapsible content
+- `<Note>` / `<Tip>` / `<Warning>` - Callouts
+- `<Tabs>` / `<Tab>` - Tabbed content
+- Code blocks with syntax highlighting
+
+See [Mintlify docs](https://mintlify.com/docs) for full component reference.

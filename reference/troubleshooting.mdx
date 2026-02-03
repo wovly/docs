@@ -1,0 +1,193 @@
+---
+title: "Troubleshooting"
+description: "Common issues and how to resolve them"
+---
+
+# Troubleshooting
+
+Common issues and solutions for Wovly.
+
+## Installation Issues
+
+### macOS: "App is damaged"
+
+```bash
+xattr -cr /Applications/Wovly.app
+```
+
+### macOS: "Cannot be opened because Apple cannot check"
+
+Right-click the app → Open → Click "Open" in the dialog.
+
+### Linux: AppImage won't run
+
+```bash
+chmod +x Wovly-x.x.x.AppImage
+```
+
+## LLM Issues
+
+### "No API key configured"
+
+1. Go to **Settings**
+2. Enter your API key for Anthropic, OpenAI, or Google
+3. Save and retry
+
+### Slow responses
+
+- Check your internet connection
+- Try a different/faster model
+- Reduce conversation history length
+
+### "Rate limit exceeded"
+
+Wait a few minutes and retry. Consider upgrading your API tier for higher limits.
+
+## Integration Issues
+
+### Google: OAuth error
+
+1. Ensure OAuth consent screen is configured
+2. Add your email as a test user
+3. Check redirect URI: `http://localhost:18923/oauth/callback`
+
+### Slack: "Missing scope"
+
+1. Go to your Slack app settings
+2. Add all required User Token Scopes
+3. Reinstall the app to your workspace
+4. Reconnect in Wovly
+
+### iMessage: Can't read messages
+
+1. System Preferences → Security & Privacy → Privacy
+2. Full Disk Access → Add Wovly
+3. Restart Wovly
+
+### Integration shows "Connected" but doesn't work
+
+1. Click **Disconnect**
+2. Wait 5 seconds
+3. Click **Connect** again
+4. Re-authorize all permissions
+
+## Task Issues
+
+### Task stuck on "Waiting"
+
+The task is waiting for an external reply. Check:
+- Was the message actually sent?
+- Has the recipient replied?
+- Try: "Check for replies to the [task name] task"
+
+### Task using wrong messaging channel
+
+Wovly detects the channel from your request. Be explicit:
+- "In Slack, message Jeff..."
+- "Text Sarah..." (for iMessage)
+- "Email John..."
+
+### Task not progressing
+
+Check the task log for errors. Common causes:
+- Integration disconnected
+- Rate limits hit
+- Approval needed (check Tasks panel)
+
+## Browser Automation Issues
+
+### Browser not opening
+
+1. Install Chrome or Chromium
+2. Enable browser automation in Settings
+3. Restart Wovly
+
+### Page not loading
+
+Some sites block automation. Try:
+- Using a different approach
+- Checking if the site requires login
+
+### Can't click element
+
+1. Ask Wovly to scroll first
+2. The element may be in an iframe (not supported)
+3. Try a different selector
+
+### Login failing
+
+1. Check credentials in Credentials page
+2. Ensure domain matches exactly
+3. Handle 2FA manually if prompted
+
+## Memory Issues
+
+### Wovly doesn't remember
+
+1. Memory is session-based by default
+2. Check if memory files exist in `~/.wovly-assistant/memory/`
+3. Try explicit recall: "Do you remember when we discussed..."
+
+### Wrong context used
+
+Be specific in your request. Reference the conversation explicitly.
+
+## Performance Issues
+
+### High CPU usage
+
+- Close other applications
+- Check for infinite task loops
+- Restart Wovly
+
+### High memory usage
+
+- Clear conversation history
+- Restart Wovly periodically
+- Delete old task files
+
+## Data Issues
+
+### Reset all settings
+
+```bash
+rm -rf ~/.wovly-assistant/
+```
+
+<Warning>
+  This deletes all data including integrations, skills, memory, and tasks.
+</Warning>
+
+### Export data
+
+Copy the entire `~/.wovly-assistant/` folder to back up.
+
+### Corrupt settings file
+
+```bash
+rm ~/.wovly-assistant/settings.json
+```
+
+Then restart Wovly and reconfigure.
+
+## Getting Help
+
+### Logs
+
+Wovly logs to the console. Open DevTools:
+- macOS: `Cmd + Option + I`
+- Windows/Linux: `Ctrl + Shift + I`
+
+### GitHub Issues
+
+Report bugs at [GitHub Issues](https://github.com/bluerune234/wovly/issues).
+
+Include:
+- Wovly version
+- Operating system
+- Steps to reproduce
+- Error messages from console
+
+### Community
+
+Join the community Discord for real-time help and discussion.

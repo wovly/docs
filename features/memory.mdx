@@ -1,0 +1,113 @@
+---
+title: "Memory & Profile"
+description: "How Wovly remembers context and learns about you"
+---
+
+# Memory & Profile
+
+Wovly maintains memory of your conversations and learns about you over time. This context makes interactions more personalized and efficient.
+
+## User Profile
+
+Your profile provides context for every interaction. Set it up in the **About Me** page:
+
+- **Name**: How Wovly addresses you
+- **Occupation**: Helps with professional context
+- **City**: For weather, local searches
+- **Home Life**: Family, pets, routines
+
+## Conversation Memory
+
+### Daily Logs
+
+Wovly saves daily conversation summaries to:
+```
+~/.wovly-assistant/memory/daily/YYYY-MM-DD.md
+```
+
+These include:
+- Key topics discussed
+- Decisions made
+- Action items
+- Important facts learned
+
+### Long-term Memory
+
+Periodically, daily logs are summarized into long-term memory:
+```
+~/.wovly-assistant/memory/longterm/
+```
+
+This enables Wovly to recall conversations from weeks or months ago.
+
+## Using Memory
+
+### Automatic Context
+
+Wovly automatically uses memory in conversations:
+
+```
+You: What did we decide about the vacation?
+
+Wovly: [Searches memory]
+       Last week you decided on the Hawaii trip for March 15-22.
+       You were going to book the hotel this week.
+```
+
+### Explicit Search
+
+Ask Wovly to search past conversations:
+
+```
+You: Did we ever discuss the marketing budget?
+
+Wovly: [Searches memory]
+       Yes, on January 15th you mentioned setting aside $5,000 
+       for Q1 marketing. On January 20th you revised it to $7,500.
+```
+
+## Profile Updates
+
+Wovly can learn facts about you from conversation:
+
+```
+You: My daughter's birthday is April 3rd
+
+Wovly: Got it! I'll remember that your daughter's birthday is April 3rd.
+       Would you like me to save this to your profile?
+```
+
+## Privacy
+
+<Note>
+  All memory data is stored locally on your machine. Nothing is sent to external servers except the LLM API calls needed for conversation.
+</Note>
+
+### Data Locations
+
+| Data | Location |
+|------|----------|
+| Profile | `~/.wovly-assistant/settings.json` |
+| Daily Memory | `~/.wovly-assistant/memory/daily/` |
+| Long-term | `~/.wovly-assistant/memory/longterm/` |
+
+### Clearing Memory
+
+To clear conversation history:
+1. Navigate to `~/.wovly-assistant/memory/`
+2. Delete the files you want to clear
+3. Restart Wovly
+
+## Best Practices
+
+<Tip>
+  **Complete your profile** - The more context, the better Wovly can assist
+</Tip>
+
+<Tip>
+  **Mention important facts** - Wovly learns from conversation naturally
+</Tip>
+
+<Tip>
+  **Reference past discussions** - "Remember when we talked about..." helps Wovly find context
+</Tip>
