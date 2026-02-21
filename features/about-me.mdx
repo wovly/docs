@@ -1,0 +1,268 @@
+---
+title: 'About Me & Goals'
+description: 'Your profile and goals as the foundation of Wovly intelligence'
+icon: 'user'
+---
+
+<img
+  src="/images/goals.png"
+  alt="About Me & Goals"
+/>
+
+## Overview
+
+The "About Me" section is the foundation of Wovly's intelligence. Your profile and goals act as the **primary filter** for extracting insights from all your integrations. By understanding who you are, what you're working on, and what matters to you, Wovly can prioritize the right information and ignore the noise.
+
+## How Goals Drive Insights
+
+<Card title="The Insight Filtering Process" icon="filter">
+  All Messages (100s/day) → Goal Filter → Relevant Messages (10-20) → Insights (3-10)
+</Card>
+
+**Without goals:**
+- Generic analysis of all messages
+- No context about what's important
+- Low-priority items mixed with critical ones
+- 50+ insights daily (overwhelming)
+
+**With goals:**
+- Focused analysis based on your priorities
+- Context-aware prioritization
+- Critical items highlighted, noise filtered
+- 3-10 actionable insights daily
+
+### Example Scenario
+
+**Your Goal:**
+```
+Launch Q1 product feature by March 15th
+```
+
+**Messages received:**
+1. ✅ **Email from engineering:** "API integration blocked" → **Priority 5 insight** (directly related to launch)
+2. ✅ **Slack from PM:** "Design review scheduled for Friday" → **Priority 4 insight** (launch prep)
+3. ❌ Email from HR: "Update your emergency contact" → **Filtered out** (not related to goal)
+4. ❌ Slack in #random: "Who wants lunch?" → **Filtered out** (social, not priority)
+5. ✅ **Calendar:** "Product demo meeting conflicts with engineering sync" → **Priority 5 insight** (launch conflict)
+
+**Result:** 3 actionable insights instead of 5 notifications, all focused on your goal.
+
+## Goals as Priority Signals
+
+### How Wovly Uses Goals
+
+<CardGroup cols={2}>
+  <Card title="Keyword Matching" icon="magnifying-glass">
+    Goal mentions "product launch" → messages with launch, release, deploy get higher priority
+  </Card>
+  <Card title="People Matching" icon="users">
+    Goal mentions "Sarah" → messages from Sarah automatically prioritized
+  </Card>
+  <Card title="Timeline Matching" icon="clock">
+    Goal deadline approaching → urgency increases automatically
+  </Card>
+  <Card title="Topic Clustering" icon="layer-group">
+    Related messages grouped → single insight instead of many notifications
+  </Card>
+</CardGroup>
+
+### Priority Scoring Logic
+
+Goals directly influence the 1-5 priority scale:
+
+<AccordionGroup>
+  <Accordion title="Priority 5 (Critical)" icon="circle-exclamation">
+    - Message directly mentions goal keyword + deadline approaching
+    - Conflict detected that blocks goal completion
+    - VIP (mentioned in goal) sends urgent request
+  </Accordion>
+
+  <Accordion title="Priority 4 (High)" icon="circle-arrow-up">
+    - Message relates to goal topic
+    - Decision point that affects goal timeline
+    - Follow-up needed from goal-related contact
+  </Accordion>
+
+  <Accordion title="Priority 3 (Medium)" icon="circle-dot">
+    - Tangentially related to goal
+    - General updates from goal contacts
+    - Background information useful for goal
+  </Accordion>
+
+  <Accordion title="Priority 2-1 (Low)" icon="circle">
+    - Not related to any active goals
+    - Social/informational only
+    - Can be safely ignored
+  </Accordion>
+</AccordionGroup>
+
+## Your Profile: The Context Engine
+
+Your profile (`profile.md`) provides essential context that enhances every interaction with Wovly.
+
+### What's in Your Profile
+
+<Steps>
+  <Step title="Basic Information">
+    Name, role, company, contact information, location and timezone
+  </Step>
+  <Step title="Work Context">
+    Current projects, team members and their roles, key stakeholders and VIPs
+  </Step>
+  <Step title="Active Goals">
+    What you're working toward, deadlines and milestones, success criteria
+  </Step>
+  <Step title="Preferences">
+    Communication style, working hours, notification preferences
+  </Step>
+  <Step title="Important Contacts">
+    Who to prioritize (boss, clients, family), who to filter (newsletters, marketing)
+  </Step>
+</Steps>
+
+### Example Profile Structure
+
+<CodeGroup>
+
+```markdown profile.md
+# Profile: Jeff Chou
+
+## Basic Information
+- **Name:** Jeff Chou
+- **Role:** Senior Product Manager
+- **Company:** TechCorp Inc.
+- **Email:** jeff@techcorp.com
+- **Location:** San Francisco, CA
+- **Timezone:** America/Los_Angeles
+
+## Active Goals (Q1 2026)
+
+### 1. Launch API Integration Feature
+**Deadline:** March 15, 2026
+**Priority:** Critical (5)
+**Success Criteria:**
+- 100% test coverage
+- 100 beta users onboarded
+- < 50ms API response time
+
+**Related Keywords:**
+- API, integration, launch, release, beta
+
+### 2. Maintain Work-Life Balance
+**Ongoing**
+**Priority:** Medium (3)
+**Success Criteria:**
+- No work emails after 7pm weekdays
+- Daily family dinner at 6pm
+
+## Team & Contacts
+
+### Key Stakeholders (VIPs - Priority 5)
+- **Sarah Johnson** - VP Product (my manager)
+  - ALWAYS prioritize her messages
+- **Jane Chou** - Wife
+  - ALWAYS priority 5
+
+### Important Contacts (Priority 4)
+- **Alex Chen** - Senior Engineer
+- **Maria Rodriguez** - UX Designer
+
+## Work Preferences
+
+### Communication Style
+- **Preferred:** Direct, concise updates with action items
+- **Response Time:** Within 2 hours during work hours
+
+### Working Hours
+- **Standard:** Monday-Friday, 9am-6pm PST
+- **Focused Time:** Tuesday/Thursday mornings (no meetings)
+
+### Priority Rules
+1. **Immediate notification (Priority 5):**
+   - Messages from Sarah (VP Product)
+   - Messages from wife (Jane)
+   - Launch blockers
+
+2. **Hourly digest (Priority 4):**
+   - Messages from direct reports
+   - Customer feedback
+
+3. **Filter out (Priority 1-2):**
+   - Marketing emails
+   - Social media notifications
+```
+
+</CodeGroup>
+
+## Managing Your Profile
+
+<Tabs>
+  <Tab title="Initial Setup">
+    1. Go to **About Me** tab in Wovly
+    2. Click **Edit Profile**
+    3. Fill in basic information
+    4. Add 1-2 active goals
+    5. List key contacts (VIPs)
+    6. Save
+  </Tab>
+
+  <Tab title="Regular Updates">
+    Update your profile when:
+    - ✅ Starting a new project or goal
+    - ✅ Goal deadlines change
+    - ✅ New team members join
+    - ✅ Priorities shift
+
+    **Recommended:** Weekly review
+  </Tab>
+
+  <Tab title="Quick Updates">
+    Via chat:
+    ```
+    "Add a new goal: Hire senior engineer by April 1st"
+    ```
+
+    Wovly will update your profile automatically
+  </Tab>
+</Tabs>
+
+## Best Practices
+
+<CardGroup cols={2}>
+  <Card title="Be Specific with Goals" icon="bullseye">
+    Include deadlines, success criteria, and related keywords for better filtering
+  </Card>
+  <Card title="Update Regularly" icon="rotate">
+    Review goals weekly, update as priorities shift
+  </Card>
+  <Card title="Name Your VIPs" icon="star">
+    Explicitly list people whose messages should always be priority 5
+  </Card>
+  <Card title="Use Keywords Liberally" icon="tags">
+    More keywords = better filtering and prioritization
+  </Card>
+</CardGroup>
+
+## Privacy & Security
+
+<Info>
+**Your profile is completely private:**
+- Stored locally: `~/.wovly-assistant/users/{username}/profiles/profile.md`
+- Never sent to cloud
+- Encrypted at rest
+- Only relevant snippets sent to LLM for analysis
+</Info>
+
+## Related Documentation
+
+<CardGroup cols={3}>
+  <Card title="Insights" icon="lightbulb" href="/features/insights">
+    How goals drive insight generation
+  </Card>
+  <Card title="Skills" icon="wand-magic-sparkles" href="/features/skills">
+    Create goal-based skills
+  </Card>
+  <Card title="Tasks" icon="list-check" href="/features/tasks">
+    Automate goal-related workflows
+  </Card>
+</CardGroup>

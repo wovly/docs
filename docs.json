@@ -24,7 +24,10 @@
           {
             "group": "Features",
             "pages": [
+              "features/about-me",
+              "features/insights",
               "features/chat",
+              "features/interfaces",
               "features/tasks",
               "features/skills",
               "features/memory",

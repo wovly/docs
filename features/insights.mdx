@@ -1,0 +1,297 @@
+---
+title: 'Smart Insights'
+description: 'AI-powered analysis that surfaces what matters from all your communications'
+icon: 'lightbulb'
+---
+
+<img
+  src="/images/insight.png"
+  alt="Smart Insights Dashboard"
+/>
+
+## Overview
+
+Wovly's Smart Insights automatically analyzes your messages across all connected platforms (Gmail, Slack, iMessage, custom websites, etc.) to surface important information you might have missed. Every hour, the system cross-references new messages with your profile, goals, calendar, and historical context to generate actionable insights.
+
+## How It Works
+
+<Steps>
+  <Step title="Message Collection (Every Hour)">
+    Collect new messages from Gmail, Slack, iMessage, custom websites, and more
+  </Step>
+  <Step title="Fact Extraction">
+    AI extracts key facts: people, dates, commitments, questions, sentiment
+  </Step>
+  <Step title="Cross-Referencing">
+    Compare facts against your profile, calendar, goals, and conversation history
+  </Step>
+  <Step title="Insight Generation">
+    When conflicts, gaps, or patterns detected → generate insight
+  </Step>
+  <Step title="Priority Scoring (1-5)">
+    Score based on urgency, sender importance, time sensitivity, keywords
+  </Step>
+  <Step title="Smart Filtering">
+    Show only high-value insights aligned with your goals
+  </Step>
+</Steps>
+
+<Info>
+You'll typically see **3-10 insights per day** instead of hundreds of messages.
+</Info>
+
+## Insight Types
+
+<CardGroup cols={2}>
+  <Card title="Conflict Detection" icon="triangle-exclamation">
+    Identifies scheduling conflicts, contradictory information, overlapping commitments
+
+    **Example:** "You have two meetings scheduled at 2pm on Friday"
+  </Card>
+
+  <Card title="Follow-up Tracking" icon="reply">
+    Reminds you of pending responses, unanswered questions, missed replies
+
+    **Example:** "Mike asked about the budget proposal 3 days ago and hasn't received a response"
+  </Card>
+
+  <Card title="Miscommunication Alerts" icon="message-exclamation">
+    Flags potential misunderstandings, ambiguous language, tone mismatches
+
+    **Example:** "The client mentioned 'next Tuesday' but it's unclear if they mean Feb 25 or Mar 4"
+  </Card>
+
+  <Card title="Action Needed" icon="circle-exclamation">
+    Highlights urgent requests, deadline reminders, decisions requiring input
+
+    **Example:** "Sign the contract by 5pm today (mentioned in email from legal team)"
+  </Card>
+</CardGroup>
+
+## Priority Scoring
+
+Each insight receives a priority score from 1-5:
+
+<AccordionGroup>
+  <Accordion title="Priority 5 (Critical)" icon="5">
+    - Urgent conflicts or missed deadlines
+    - Important unanswered questions
+    - Scheduling conflicts
+    - Pending responses from VIPs
+
+    **Action:** Address immediately
+  </Accordion>
+
+  <Accordion title="Priority 4 (High)" icon="4">
+    - Scheduling conflicts
+    - Pending responses from VIPs
+    - Important but not urgent items
+
+    **Action:** Address today
+  </Accordion>
+
+  <Accordion title="Priority 3 (Medium)" icon="3">
+    - General follow-ups
+    - Minor conflicts
+    - Background information
+
+    **Action:** Review when convenient
+  </Accordion>
+
+  <Accordion title="Priority 2 (Low)" icon="2">
+    - FYI items
+    - Nice-to-know information
+
+    **Action:** Optional review
+  </Accordion>
+
+  <Accordion title="Priority 1 (Minimal)" icon="1">
+    - Archival facts
+    - Low-priority updates
+
+    **Action:** Usually auto-filtered
+  </Accordion>
+</AccordionGroup>
+
+### What Determines Priority?
+
+<CardGroup cols={3}>
+  <Card title="Sender Importance" icon="user-crown">
+    Based on your interaction history and VIP list
+  </Card>
+  <Card title="Time Sensitivity" icon="clock">
+    Deadlines, meeting proximity, urgency keywords
+  </Card>
+  <Card title="Goal Alignment" icon="bullseye">
+    Relevance to your stated goals and preferences
+  </Card>
+</CardGroup>
+
+## Integration Source Icons
+
+Each insight card displays an icon showing the primary platform:
+
+- 📧 **Gmail** - Email-based insights
+- 💬 **iMessage** - Text message insights
+- 💼 **Slack** - Workspace communication
+- 🌐 **Custom Website** - Scraped messages
+- 📅 **Calendar** - Event-based insights
+
+The icon represents the **most common source** among related messages for that insight.
+
+## Using Insights Effectively
+
+<Tabs>
+  <Tab title="Daily Review">
+    **Morning routine:**
+    - Review insights from overnight
+    - Identify urgent action items
+    - Plan your day around priorities
+  </Tab>
+
+  <Tab title="Take Action">
+    **From insight card:**
+    - **Respond** - Reply directly
+    - **Schedule** - Add to calendar
+    - **Dismiss** - Mark as handled
+    - **Snooze** - Remind me later
+  </Tab>
+
+  <Tab title="Customize">
+    **Settings → Insights:**
+    - Filter by priority (only 3+)
+    - Filter by source platform
+    - Adjust check frequency
+    - Define focus areas
+  </Tab>
+</Tabs>
+
+## Multi-Source Analysis
+
+Insights can combine information from multiple platforms:
+
+<CodeGroup>
+
+```text Example Scenario
+1. Client sends email asking for meeting
+2. Colleague messages on Slack about client prep
+3. Calendar shows conflict at requested time
+4. Daycare sends message about early pickup needed
+
+Generated insight (Priority 5):
+"Client meeting conflicts with existing event.
+Early daycare pickup at 4pm limits afternoon.
+Colleague waiting for prep discussion."
+
+Suggested action: Propose alternative time,
+coordinate with colleague, arrange daycare backup.
+```
+
+</CodeGroup>
+
+This holistic view saves you from context-switching across apps.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="No insights showing">
+    **Possible causes:**
+    - No new messages in the past hour
+    - All insights below priority filter
+    - Integration not configured
+
+    **Solutions:**
+    - Check Settings → Integrations
+    - Lower priority filter threshold
+    - Manually trigger refresh
+  </Accordion>
+
+  <Accordion title="Too many insights">
+    **Solutions:**
+    - Increase priority threshold to 3 or 4
+    - Add more specific goals
+    - Configure per-platform filters
+    - Exclude low-value channels
+  </Accordion>
+
+  <Accordion title="Insights seem inaccurate">
+    **Solutions:**
+    - Update profile in Settings → About Me
+    - Connect Google Calendar
+    - Give system 2-3 days to build context
+  </Accordion>
+</AccordionGroup>
+
+## Examples
+
+<CodeGroup>
+
+```text Example 1: Cross-Platform Coordination
+Messages:
+- Gmail: Client asks for Friday 2pm meeting
+- Slack: Colleague asks when client meeting is
+- iMessage: Wife asks to pick up kids at 2pm Friday
+- Calendar: Team sync already at 2pm Friday
+
+Generated Insight (Priority 5):
+"Four conflicting commitments at 2pm Friday.
+Client meeting (email), team sync (calendar),
+child pickup (text), colleague inquiry (Slack)
+all need coordination."
+```
+
+```text Example 2: Follow-up Detection
+Messages:
+- Slack (Monday): Boss asks for Q1 numbers
+- Gmail (Wednesday): Boss follows up on Q1 numbers
+- No response sent
+
+Generated Insight (Priority 4):
+"Boss has asked twice for Q1 numbers
+(Slack Mon, Email Wed) with no response yet.
+Deadline may be approaching."
+```
+
+```text Example 3: Custom Website Integration
+Messages:
+- Brightwheel: Field trip form due Friday
+- Calendar: Out of office all day Friday
+- Gmail: No communication with teacher
+
+Generated Insight (Priority 3):
+"Daycare field trip form due Friday,
+but you're OOO that day.
+Submit early or email teacher about extension."
+```
+
+</CodeGroup>
+
+## Privacy & Performance
+
+<Warning>
+**Data Processing:**
+- Analysis happens on your machine
+- Insights stored locally (90-day retention)
+- Only message snippets sent to LLM
+- Full content never leaves your device
+</Warning>
+
+**Performance Metrics:**
+- Average: 30-60 seconds for 50 messages
+- LLM calls: 2-3 per batch
+- Token usage: ~5,000-10,000 per hour
+- Cost: $0.01-0.03/hour with Claude Sonnet
+
+## Related Documentation
+
+<CardGroup cols={3}>
+  <Card title="About Me" icon="user" href="/features/about-me">
+    Set up goals to drive insights
+  </Card>
+  <Card title="Integrations" icon="plug" href="/integrations/overview">
+    Connect message sources
+  </Card>
+  <Card title="Tasks" icon="list-check" href="/features/tasks">
+    Automate insight-driven workflows
+  </Card>
+</CardGroup>
