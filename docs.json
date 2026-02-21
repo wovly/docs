@@ -26,14 +26,9 @@
             "pages": [
               "features/about-me",
               "features/insights",
-              "features/chat",
               "features/interfaces",
-              "features/tasks",
               "features/skills",
-              "features/memory",
-              "features/voice-mimic",
-              "features/llm-providers",
-              "features/settings"
+              "features/tasks"
             ]
           },
           {
